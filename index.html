@@ -52,23 +52,24 @@
   .checkbox-item span { font-size: 13px; color: #374151; line-height: 1.4; }
   .see-more-btn { width: 100%; padding: 9px; border: 1px dashed #d1d5db; border-radius: 8px; background: transparent; color: #1a4fa0; font-size: 13px; font-weight: 500; cursor: pointer; transition: background 0.15s; font-family: 'Inter', sans-serif; margin-top: 4px; }
   .see-more-btn:hover { background: #f0f6ff; }
-  .upload-zone { border: 2px dashed #d1d5db; border-radius: 10px; padding: 1.5rem; text-align: center; cursor: pointer; transition: border-color 0.2s, background 0.2s; background: #f9fafb; position: relative; }
-  .upload-zone:hover { border-color: #1a4fa0; background: #f0f6ff; }
-  .upload-zone.has-files { border-color: #1a4fa0; background: #f0f6ff; }
-  .upload-zone input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
-  .upload-icon { font-size: 26px; margin-bottom: 8px; display: block; }
-  .upload-zone p { font-size: 13px; color: #6b7280; line-height: 1.6; }
-  .upload-zone strong { color: #1a4fa0; font-weight: 500; }
-  .file-list { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
-  .file-chip { display: flex; align-items: center; gap: 6px; background: #dbeafe; color: #1e40af; font-size: 12px; padding: 4px 10px; border-radius: 20px; font-weight: 500; }
-  .file-chip button { background: none; border: none; cursor: pointer; color: #1e40af; font-size: 15px; padding: 0; line-height: 1; opacity: 0.7; }
   .divider { height: 1px; background: #f0f2f8; margin: 1.25rem 0; }
-  .or-label { text-align: center; font-size: 12px; color: #9ca3af; margin: 0.75rem 0; position: relative; }
-  .or-label::before, .or-label::after { content: ''; position: absolute; top: 50%; width: 44%; height: 1px; background: #e5e7eb; }
-  .or-label::before { left: 0; } .or-label::after { right: 0; }
   .char-count { font-size: 11px; color: #9ca3af; text-align: right; margin-top: 4px; }
   .obs-box { background: #fffbeb; border: 1px solid #fcd34d; border-radius: 10px; padding: 12px 14px; font-size: 13px; color: #92400e; line-height: 1.6; margin-top: 10px; }
   .obs-box strong { font-weight: 600; }
+
+  /* Bloco de envio de arquivo */
+  .file-send-box { border: 1.5px dashed #d1d5db; border-radius: 12px; padding: 1.25rem; background: #f9fafb; }
+  .file-send-box .title { font-size: 13px; font-weight: 500; color: #6b7280; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
+  .file-send-box .title span.lock { font-size: 14px; }
+  .file-send-box .desc { font-size: 12px; color: #9ca3af; line-height: 1.6; margin-bottom: 14px; }
+  .file-send-box .desc strong { color: #6b7280; }
+  .contact-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn-wpp { display: flex; align-items: center; gap: 8px; padding: 10px 18px; background: #22c55e; color: white; border: none; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; font-family: 'Inter', sans-serif; text-decoration: none; transition: opacity 0.2s; }
+  .btn-wpp:hover { opacity: 0.9; }
+  .btn-email { display: flex; align-items: center; gap: 8px; padding: 10px 18px; background: #1a4fa0; color: white; border: none; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; font-family: 'Inter', sans-serif; text-decoration: none; transition: opacity 0.2s; }
+  .btn-email:hover { opacity: 0.9; }
+  .btn-icon { font-size: 16px; }
+
   .nav-buttons { display: flex; gap: 12px; margin-top: 1.5rem; }
   .btn-back { flex: 1; padding: 13px; border: 1.5px solid #d1d5db; border-radius: 10px; background: #fff; color: #374151; font-size: 14px; font-family: 'Sora', sans-serif; font-weight: 500; cursor: pointer; transition: background 0.15s; }
   .btn-back:hover { background: #f9fafb; }
@@ -148,29 +149,25 @@
         <div><h2>Identidade visual & design</h2><span class="sub">Materiais e referências visuais</span></div>
       </div>
 
+      <!-- Bloco de envio de arquivos -->
       <div class="field-group">
-        <label class="field-label">Material de identidade visual
-          <span class="hint">Envie logo, manual da marca, paleta de cores, ícones, apresentações ou qualquer material que represente sua marca.</span>
+        <label class="field-label">Envio de arquivos
+          <span class="hint">Logo, manual da marca, paleta de cores, referências visuais e qualquer material gráfico.</span>
         </label>
-        <div class="upload-zone" id="zone1" onclick="document.getElementById('files1').click()">
-          <input type="file" id="files1" multiple accept="image/*,.pdf,.ai,.eps,.svg" onchange="handleFiles('files1','list1','zone1')">
-          <span class="upload-icon">📁</span>
-          <p><strong>Clique para enviar</strong> ou arraste os arquivos aqui<br><small>PNG, JPG, PDF, AI, SVG</small></p>
-          <div class="file-list" id="list1"></div>
-        </div>
-      </div>
-
-      <div class="or-label">ou</div>
-
-      <div class="field-group">
-        <label class="field-label">Referências para criação do zero
-          <span class="hint">Se a Flux criará sua identidade visual, envie referências: cores, estilos, marcas que admira, conceito que deseja transmitir.</span>
-        </label>
-        <div class="upload-zone" id="zone2" onclick="document.getElementById('files2').click()">
-          <input type="file" id="files2" multiple accept="image/*,.pdf" onchange="handleFiles('files2','list2','zone2')">
-          <span class="upload-icon">✨</span>
-          <p><strong>Enviar referências visuais</strong><br><small>Imagens, prints, PDFs de inspiração</small></p>
-          <div class="file-list" id="list2"></div>
+        <div class="file-send-box">
+          <div class="title"><span class="lock">📎</span> Envie os arquivos diretamente pelo WhatsApp ou e-mail</div>
+          <div class="desc">
+            O envio de arquivos pelo formulário não está disponível pois os arquivos são pesados.<br>
+            <strong>Envie sua logo, referências e materiais visuais pelo WhatsApp ou e-mail abaixo:</strong>
+          </div>
+          <div class="contact-buttons">
+            <a class="btn-wpp" href="https://wa.me/5544998140129" target="_blank">
+              <span class="btn-icon">💬</span> WhatsApp
+            </a>
+            <a class="btn-email" href="mailto:mkt.speednow@gmail.com" target="_blank">
+              <span class="btn-icon">✉️</span> mkt.speednow@gmail.com
+            </a>
+          </div>
         </div>
       </div>
 
@@ -205,22 +202,18 @@
         <span class="q-label">Por que o nome Instituto Vela? <span class="required">*</span></span>
         <textarea id="q1" placeholder="Conte a história ou significado por trás do nome..." rows="3"></textarea>
       </div>
-
       <div class="question-block">
         <span class="q-label">Qual o público dos alunos que vocês querem atrair? <span class="required">*</span></span>
         <textarea id="q2" placeholder="Descreva o perfil ideal dos seus alunos (idade, profissão, objetivos...)" rows="3"></textarea>
       </div>
-
       <div class="question-block">
         <span class="q-label">Qual vai ser o produto principal de venda do Instituto Vela? <span class="required">*</span></span>
         <textarea id="q3" placeholder="Ex: um curso específico, um plano de assinatura, mentoria..." rows="3"></textarea>
       </div>
-
       <div class="question-block">
         <span class="q-label">Quem são as pessoas que vão se tornar depois de aprender com os cursos do Instituto Vela? <span class="required">*</span></span>
         <textarea id="q4" placeholder="Descreva a transformação que o aluno vai vivenciar..." rows="3"></textarea>
       </div>
-
       <div class="question-block">
         <span class="q-label">O Instituto tem algum diferencial ou método próprio?</span>
         <textarea id="q5" placeholder="Ex: método exclusivo, comunidade, suporte diferenciado, parcerias..." rows="3"></textarea>
@@ -232,7 +225,6 @@
         <div class="section-icon icon-green">💡</div>
         <div><h2>Modelo de negócio</h2><span class="sub">Como querem vender</span></div>
       </div>
-
       <div class="field-group">
         <label class="field-label">Como vocês querem estruturar as vendas? <span class="required">*</span>
           <span class="hint">Selecione a opção que mais faz sentido para o Instituto Vela.</span>
@@ -286,7 +278,7 @@
     <p class="submit-note">Suas informações serão enviadas com segurança à equipe Flux.</p>
     <div class="success-banner" id="success">
       <h3>✅ Briefing enviado com sucesso!</h3>
-      <p>Nossa equipe já recebeu suas informações e entrará em contato em breve. Obrigado!</p>
+      <p>Nossa equipe já recebeu suas informações e entrará em contato em breve. Lembre-se de enviar os arquivos de identidade visual pelo WhatsApp (44) 99814-0129 ou e-mail mkt.speednow@gmail.com</p>
     </div>
   </div>
 
@@ -316,7 +308,6 @@ const ALL_CURSOS = [
 
 const INITIAL_COUNT = 11;
 let showingAll = false;
-const uploadedFiles = { files1: [], files2: [] };
 
 function chkSVG() {
   return `<svg class="check-tick" width="10" height="8" viewBox="0 0 10 8"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
@@ -348,29 +339,6 @@ function toggleSeeMore() {
 }
 
 renderCursos(INITIAL_COUNT);
-
-function handleFiles(inputId, listId, zoneId) {
-  uploadedFiles[inputId] = [...uploadedFiles[inputId], ...Array.from(document.getElementById(inputId).files)];
-  renderFileList(inputId, listId, zoneId);
-}
-
-function renderFileList(inputId, listId, zoneId) {
-  const list = document.getElementById(listId);
-  list.innerHTML = '';
-  uploadedFiles[inputId].forEach((f, i) => {
-    const chip = document.createElement('div');
-    chip.className = 'file-chip';
-    const name = f.name.length > 22 ? f.name.substring(0,20)+'...' : f.name;
-    chip.innerHTML = `<span>${name}</span><button onclick="event.stopPropagation();removeFile('${inputId}','${listId}','${zoneId}',${i})">&times;</button>`;
-    list.appendChild(chip);
-  });
-  document.getElementById(zoneId).classList.toggle('has-files', uploadedFiles[inputId].length > 0);
-}
-
-function removeFile(inputId, listId, zoneId, idx) {
-  uploadedFiles[inputId].splice(idx, 1);
-  renderFileList(inputId, listId, zoneId);
-}
 
 function toggleCheck(el, max) {
   const grid = el.parentElement;
@@ -450,6 +418,11 @@ IDENTIDADE VISUAL & DESIGN
 Cursos selecionados (${cursos.length}/8):
   - ${cursosList}
 
+⚠️ ARQUIVOS PENDENTES
+O cliente foi orientado a enviar logo, referências e materiais visuais por:
+• WhatsApp: (44) 99814-0129
+• E-mail: mkt.speednow@gmail.com
+
 ════════════════════════
 ESTRATÉGIA & POSICIONAMENTO
 
@@ -484,7 +457,7 @@ ${g('nicho') || 'Não informado'}
 ════════════════════════
 Enviado via Formulário de Briefing Flux EAD`;
 
-  const trelloEmail = 'mktspeednowead+sq2jtnmznlfj4xjdxefo@boards.trello.com';
+  const trelloEmail = 'mktspeednowead+ylo37mfzf99nqm0ljtvs@boards.trello.com';
   window.location.href = `mailto:${trelloEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   const btn = document.getElementById('btn-submit');
   btn.disabled = true; btn.textContent = 'Abrindo e-mail...';
